@@ -1,10 +1,10 @@
-SELECT y.ID
-  FROM ECOLI_DATA y
+SELECT x.ID
+  FROM ECOLI_DATA x
   JOIN (SELECT A.ID
           FROM ECOLI_DATA A
           JOIN (SELECT *
                   FROM ECOLI_DATA
                  WHERE PARENT_ID IS NULL) B
-            ON (A.PARENT_ID = B.ID)) x
-    ON (y.PARENT_ID = x.ID)
- ORDER BY y.ID
+            ON (A.PARENT_ID = B.ID)) y
+    ON (x.PARENT_ID = y.ID)
+ ORDER BY x.ID
