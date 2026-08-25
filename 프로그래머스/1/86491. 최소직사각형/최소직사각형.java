@@ -1,16 +1,30 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
     public int solution(int[][] sizes) {
-        int maxW = 0;
-        int maxH = 0;
+        int answer = 0;
+        int num = sizes.length; 
         
-        for (int[] card : sizes) {
-            int w = Math.max(card[0], card[1]);
-            int h = Math.min(card[0], card[1]);
-            maxW = Math.max(maxW, w);
-            maxH = Math.max(maxH, h);
-        }
-        return maxW * maxH;
+        int[] maxW = new int[num];
+        int[] maxH = new int[num];
+        
+        for (int i = 0; i < sizes.length; i++) {
+            int w = sizes[i][0]; // 가로
+            int h = sizes[i][1]; // 세로
+            
+            if ( w > h ) {
+                maxW[i] = w;
+                maxH[i] = h;
+            } else {
+                maxW[i] = h;
+                maxH[i] = w;
+            }
+        } 
+        
+        Arrays.sort(maxW);
+        Arrays.sort(maxH);
+        
+        answer =  maxW[maxW.length - 1] * maxH[maxH.length - 1];
+        return answer;
     }
 }
