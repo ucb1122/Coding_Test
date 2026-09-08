@@ -1,10 +1,10 @@
 # [level 0] 배열의 평균값 - 120817 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120817) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120817?language=cpp) 
 
 ### 성능 요약
 
-메모리: 85.6 MB, 시간: 0.07 ms
+메모리: 4.95 MB, 시간: 0.01 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 04월 09일 21:22:02
+2026년 09월 08일 10:35:56
 
 ### 문제 설명
 
