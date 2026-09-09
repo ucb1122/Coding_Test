@@ -1,10 +1,10 @@
 # [level 0] 수 조작하기 1 - 181926 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181926) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181926?language=cpp) 
 
 ### 성능 요약
 
-메모리: 90.2 MB, 시간: 6.76 ms
+메모리: 4.82 MB, 시간: 0.74 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 04월 09일 16:24:22
+2026년 09월 09일 22:34:08
 
 ### 문제 설명
 
