@@ -1,10 +1,10 @@
 # [level 1] 내적 - 70128 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/70128) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/70128?language=cpp) 
 
 ### 성능 요약
 
-메모리: 74.8 MB, 시간: 0.03 ms
+메모리: 4.92 MB, 시간: 0.01 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 06월 29일 19:05:16
+2026년 09월 15일 10:21:44
 
 ### 문제 설명
 
