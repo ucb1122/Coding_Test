@@ -3,28 +3,20 @@ import java.util.*;
 class Solution {
     public int solution(int[][] sizes) {
         int answer = 0;
-        int num = sizes.length; 
         
-        int[] maxW = new int[num];
-        int[] maxH = new int[num];
+        int n = sizes.length;
         
-        for (int i = 0; i < sizes.length; i++) {
-            int w = sizes[i][0]; // 가로
-            int h = sizes[i][1]; // 세로
-            
-            if ( w > h ) {
-                maxW[i] = w;
-                maxH[i] = h;
-            } else {
-                maxW[i] = h;
-                maxH[i] = w;
-            }
-        } 
+        int max[] = new int[n];
+        int min[] = new int[n];
         
-        Arrays.sort(maxW);
-        Arrays.sort(maxH);
+        for (int i = 0; i < n; i++) {
+            max[i] = Math.max(sizes[i][0], sizes[i][1]);
+            min[i] = Math.min(sizes[i][0], sizes[i][1]);
+        }
         
-        answer =  maxW[maxW.length - 1] * maxH[maxH.length - 1];
-        return answer;
+        Arrays.sort(max);
+        Arrays.sort(min);
+        
+        return max[n-1] * min[n-1];
     }
 }
