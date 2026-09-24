@@ -1,31 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 class Solution {
     public int[] solution(int[] answers) {
-        int[] one = {1, 2, 3, 4, 5};          
-        int[] two = {2, 1, 2, 3, 2, 4, 2, 5}; 
-        int[] three = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5}; 
+        int l = answers.length;
         
-        int[] scores = new int[3];
+        int[] first = {1, 2, 3, 4, 5};
+        int[] second = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] third = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
         
-        for (int i = 0; i < answers.length; i++) {
-            if (answers[i] == one[i % one.length]) scores[0]++;
-            if (answers[i] == two[i % two.length]) scores[1]++;
-            if (answers[i] == three[i % three.length]) scores[2]++;
+        int fCount = 0;
+        int sCount = 0;
+        int tCount = 0;
+        
+        for (int i = 0; i < l; i++) {
+            if (answers[i] == first[i % first.length]) {
+                fCount++;    
+            }
+            if (answers[i] == second[i % second.length]) {
+                sCount++;    
+            }
+            if (answers[i] == third[i % third.length]) {
+                tCount++;    
+            }
         }
         
-        int maxScore = Math.max(scores[0], Math.max(scores[1], scores[2]));
+        int maxScore = Math.max(fCount, Math.max(sCount, tCount));
+        ArrayList<Integer> answer = new ArrayList<>();
         
-        List<Integer> list = new ArrayList<>();
-        if (scores[0] == maxScore) list.add(1);
-        if (scores[1] == maxScore) list.add(2);
-        if (scores[2] == maxScore) list.add(3);
+        if (maxScore == fCount) answer.add(1);
+        if (maxScore == sCount) answer.add(2);
+        if (maxScore == tCount) answer.add(3);
         
-        int[] answer = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            answer[i] = list.get(i);
-        }
-        return answer;
+        int[] result = new int[answer.size()];
+        for (int i = 0; i < answer.size(); i++) {
+            result[i] = answer.get(i);
+            }
+        return result;
     }
 }
