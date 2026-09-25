@@ -18,8 +18,8 @@ string solution(vector<string> participant, vector<string> completion) {
     
     for (auto pair : hash_map) {
         if (pair.second > 0) {
-            return pair.first;
+            answer += pair.first;
         }
     }
-    return "";
+    return answer;
 }
