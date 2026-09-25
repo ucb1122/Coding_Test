@@ -1,15 +1,17 @@
-import java.util.HashSet;
+import java.util.*;
 
 class Solution {
     public int solution(int[] nums) {
-        int maxSelect = nums.length / 2;
-        HashSet<Integer> pokemonSet = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
+        int answer = 0;
         
-        for (int num : nums) {
-            pokemonSet.add(num);
+        for (int n : nums) {
+            set.add(n);
         }
         
-        int uniqueTypeCount = pokemonSet.size();
-        return Math.min(uniqueTypeCount, maxSelect);
+        int c = (nums.length) / 2;
+        int s = set.size(); 
+
+        return (c > s)? s : c;
     }
 }
