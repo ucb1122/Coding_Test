@@ -3,23 +3,24 @@
 
 using namespace std;
 
-void dfs(int current, int n, const vector<vector<int>>& computers, vector<bool>& isVisited) {
+void dfs(int current, vector<vector<int>> computers, int n, vector<bool>& isVisited) {
     isVisited[current] = true;
+    
     for (int i = 0; i < n; i++) {
-        if (computers[current][i] == 1 && !isVisited[i]) {
-            dfs(i, n, computers, isVisited);
+        if (current != i && computers[current][i] == 1 && !isVisited[i]) {
+            dfs(i, computers, n, isVisited);
         }
     }
 }
 
 int solution(int n, vector<vector<int>> computers) {
-    vector<bool> isVisited(n, false);
     int answer = 0;
+    vector<bool> isVisited(computers.size());
     
-    for (int i = 0; i<n;  i++) {
+    for (int i = 0; i < computers.size(); i++) {
         if (!isVisited[i]) {
-            dfs(i, n, computers, isVisited);
-            answer++;
+        dfs(i, computers, n, isVisited);
+        answer++;
         }
     }
     return answer;
