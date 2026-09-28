@@ -3,20 +3,27 @@
 
 using namespace std;
 
-void dfs(int index, int sum, vector<int>& numbers, int target, int& answer) {
-    if (index == numbers.size()) {
+int answer = 0;
+
+void dfs(int current, int sum, vector<int> numbers,  int target) {
+    if (current == numbers.size()) {
         if (sum == target) {
             answer++;
+            return;
         }
-        return;
+    } else {
+        dfs(current + 1, sum + numbers[current], numbers, target);
+        dfs(current + 1, sum - numbers[current], numbers, target);
     }
-    
-    dfs(index + 1, sum + numbers[index], numbers, target, answer);
-    dfs(index + 1, sum - numbers[index], numbers, target, answer);
 }
 
 int solution(vector<int> numbers, int target) {
-    int answer = 0;
-    dfs(0, 0, numbers, target, answer);
+        
+    int sum = 0;
+    int current = 0;
+
+    dfs(current, sum, numbers, target);
+
     return answer;
+
 }
