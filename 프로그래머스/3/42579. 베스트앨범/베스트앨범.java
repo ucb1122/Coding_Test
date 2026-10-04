@@ -9,16 +9,12 @@ class Solution {
             String genre = genres[i];
             int play = plays[i];
 
-            genrePlayCount.put(genre, genrePlayCount.getOrDefault(genre, 0) + play);
-
-            if (!genreSongs.containsKey(genre)) {
-                genreSongs.put(genre, new ArrayList<>());
-            }
-            genreSongs.get(genre).add(new Song(i, play));
+            genrePlayCount.merge(genre, play, Integer::sum);
+            genreSongs.computeIfAbsent(genre, k -> new ArrayList<>()).add(new Song(i, play));
         }
 
         List<String> sortedGenres = new ArrayList<>(genrePlayCount.keySet());
-        sortedGenres.sort((a, b) -> genrePlayCount.get(b) - genrePlayCount.get(a));
+        sortedGenres.sort((a, b) -> Integer.compare(genrePlayCount.get(b), genrePlayCount.get(a)));
 
         List<Integer> answerList = new ArrayList<>();
 
@@ -26,8 +22,8 @@ class Solution {
             List<Song> songs = genreSongs.get(genre);
 
             songs.sort((a, b) -> {
-                if (a.play == b.play) return a.id - b.id;
-                return b.play - a.play;
+                if (a.play == b.play) return Integer.compare(a.id, b.id);
+                return Integer.compare(b.play, a.play);
             });
 
             for (int i = 0; i < Math.min(2, songs.size()); i++) {
