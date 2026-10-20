@@ -1,22 +1,29 @@
+import java.util.*;
+
 class Solution {
     public String solution(String number, int k) {
-        int n = number.length();
-        int resultLen = n - k;              // 최종 결과 길이
-        char[] stack = new char[n];
-        int top = 0;                        // 스택의 크기
+        Deque<Character> dq = new ArrayDeque<>();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < number.length(); i++) {
             char c = number.charAt(i);
 
-            // 스택 맨 위가 현재 숫자보다 작으면 제거 (k가 남아있을 때만)
-            while (k > 0 && top > 0 && stack[top - 1] < c) {
-                top--;
+            while (k > 0 && !dq.isEmpty() && dq.peekLast() < c) {
+                dq.pollLast();
                 k--;
             }
-            stack[top++] = c;
+            dq.offerLast(c);
         }
 
-        // k가 남아있으면 뒤에서 잘라내므로, 앞의 resultLen 개만 사용
-        return new String(stack, 0, resultLen);
+        // k가 남았으면 뒤에서 제거
+        while (k > 0) {
+            dq.pollLast();
+            k--;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : dq) {
+            sb.append(c);
+        }
+        return sb.toString();
     }
 }
