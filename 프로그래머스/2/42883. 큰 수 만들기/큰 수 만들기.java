@@ -1,20 +1,28 @@
+import java.util.*;
+
 class Solution {
     public String solution(String number, int k) {
-        int n = number.length();
-        int resultLen = n - k;              
-        char[] stack = new char[n];
-        int top = 0;                        
+        Deque<Character> dq = new ArrayDeque<>();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < number.length(); i++) {
             char c = number.charAt(i);
 
-            while (k > 0 && top > 0 && stack[top - 1] < c) {
-                top--;
+            while (k > 0 && !dq.isEmpty() && dq.peekLast() < c) {
+                dq.pollLast();
                 k--;
             }
-            stack[top++] = c;
+            dq.offerLast(c);
         }
 
-        return new String(stack, 0, resultLen);
+        while (k > 0) {
+            dq.pollLast();
+            k--;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : dq) {
+            sb.append(c);
+        }
+        return sb.toString();
     }
 }
