@@ -3,13 +3,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double a = sc.nextDouble();
-        double b = sc.nextDouble();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
 
-        if (b == 0) {
+        try {
+            System.out.println((double) a / b);
+        } catch (ArithmeticException e) {
             System.out.println("error");
-        } else {
-            System.out.println(a / b);
         }
     }
 }
